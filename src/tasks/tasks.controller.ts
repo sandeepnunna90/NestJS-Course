@@ -11,21 +11,12 @@ import {
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTaskFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status-dto';
-import { Task, TaskStatus } from './tasks.model';
+import { TaskStatus } from './task-status.enum';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private tasksService: TasksService) {}
-
-  @Get()
-  getTasks(@Query() filterDto: GetTaskFilterDto): Task[] {
-    if (Object.keys(filterDto).length) {
-      return this.tasksService.getTasksWithFilters(filterDto);
-    } else {
-      return this.tasksService.getAllTasks();
-    }
-  }
 
   // NestJs provides 2 ways to retrieve request parameters
   // using the body decorator below
@@ -38,27 +29,36 @@ export class TasksController {
 
   // Second way to use individual properties and
   // decorate them with body decorator
-  @Post()
-  createTask(@Body() CreateTaskDto: CreateTaskDto): Task {
-    return this.tasksService.createTask(CreateTaskDto);
-  }
+  // @Post()
+  // createTask(@Body() CreateTaskDto: CreateTaskDto): Task {
+  //   return this.tasksService.createTask(CreateTaskDto);
+  // }
 
-  @Get('/:id')
-  getTaskById(@Param('id') id: string): Task {
-    return this.tasksService.getTaskById(id);
-  }
+  // @Get()
+  // getTasks(@Query() filterDto: GetTaskFilterDto): Task[] {
+  //   if (Object.keys(filterDto).length) {
+  //     return this.tasksService.getTasksWithFilters(filterDto);
+  //   } else {
+  //     return this.tasksService.getAllTasks();
+  //   }
+  // }
 
-  @Delete('/:id')
-  deleteTask(@Param('id') id: string): void {
-    return this.tasksService.deleteTask(id);
-  }
+  // @Get('/:id')
+  // getTaskById(@Param('id') id: string): Task {
+  //   return this.tasksService.getTaskById(id);
+  // }
 
-  @Patch('/:id/status')
-  updateTaskStatus(
-    @Param('id') id: string,
-    @Body() UpdateTaskStatusDto: UpdateTaskStatusDto,
-  ): Task {
-    const { status } = UpdateTaskStatusDto;
-    return this.tasksService.updateTaskStatus(id, status);
-  }
+  // @Delete('/:id')
+  // deleteTask(@Param('id') id: string): void {
+  //   return this.tasksService.deleteTask(id);
+  // }
+
+  // @Patch('/:id/status')
+  // updateTaskStatus(
+  //   @Param('id') id: string,
+  //   @Body() UpdateTaskStatusDto: UpdateTaskStatusDto,
+  // ): Task {
+  //   const { status } = UpdateTaskStatusDto;
+  //   return this.tasksService.updateTaskStatus(id, status);
+  // }
 }
