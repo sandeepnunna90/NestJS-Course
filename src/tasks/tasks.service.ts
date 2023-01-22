@@ -52,15 +52,6 @@ export class TasksService {
 
     return found;
   }
-  // getTaskById(id: string): Task {
-  //   const found = this.tasks.find((taks) => taks.id === id);
-
-  //   if (!found) {
-  //     throw new NotFoundException(`Task with ID: "${id}" not found`);
-  //   }
-
-  //   return found;
-  // }
 
   // createTask(CreateTaskDto: CreateTaskDto): Task {
   //   const { title, description } = CreateTaskDto;

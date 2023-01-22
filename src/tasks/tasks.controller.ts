@@ -49,11 +49,6 @@ export class TasksController {
     return this.tasksService.getTaskById(id);
   }
 
-  // @Get('/:id')
-  // getTaskById(@Param('id') id: string): Task {
-  //   return this.tasksService.getTaskById(id);
-  // }
-
   // @Delete('/:id')
   // deleteTask(@Param('id') id: string): void {
   //   return this.tasksService.deleteTask(id);
