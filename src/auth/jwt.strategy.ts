@@ -29,3 +29,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     return user;
   }
 }
+
+/* Validating using JWT token
+
+Whenever we want users to be procted , only to signed in users, we will be able to
+import the auth module and then use the gaurd. These routes will be then protected.
+And when an authorized request sends in a request, we will be able to get not just
+the claims, but the actual user object and treat it as a source of truth.
+
+We can just import this module to other modules for jwt validation and need not
+repeat this code again.
+*/
